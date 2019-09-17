@@ -7,9 +7,16 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "CommonMacro.h"
+#import "CalculatorLogic.h"
+#import "CalculatorButton.h"
+#import "CalculatorScreen.h"
 
 @interface ViewController : UIViewController
 
+@property(strong) CalculatorScreen *calculatorScreen;
+
+- (void)clickCalculatorButton:(CalculatorButton *)sender;
 
 @end
 
