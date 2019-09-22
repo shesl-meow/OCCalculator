@@ -6,9 +6,9 @@
 //  Copyright © 2019 shesonglin. All rights reserved.
 //
 
-#import "CalculatorLogic.h"
+#import "NormalLogic.h"
 
-@implementation CalculatorLogic
+@implementation NormalLogic
 
 - (instancetype)init {
     self = [super init];
@@ -19,26 +19,7 @@
     return self;
 }
 
-- (NSString *)display {
-    if (self.op == NoneOperator) {
-        assert((self.left == 0) && (self.right == 0));
-        return self.numberBuffer;
-    } else {
-        NSString *leftStr = [[NSNumber numberWithFloat:self.left] stringValue];
-        if (self.op == PlusOperator) {
-            return [NSString stringWithFormat:@"%@+%@", leftStr, self.numberBuffer];
-        } else if (self.op == MinusOperator) {
-            return [NSString stringWithFormat:@"%@-%@", leftStr, self.numberBuffer];
-        } else if (self.op == MultipleOperator) {
-            return [NSString stringWithFormat:@"%@*%@", leftStr, self.numberBuffer];
-        } else if (self.op == DivideOperator) {
-            return [NSString stringWithFormat:@"%@/%@", leftStr, self.numberBuffer];
-        } else if (self.op == ModOperator) {
-            return [NSString stringWithFormat:@"%@ mod %@", leftStr, self.numberBuffer];
-        }
-    }
-    return @"";
-}
+#pragma mark ExtensionMethod
 
 - (float)doCalculate {
     if (self.op == PlusOperator) {
@@ -107,5 +88,28 @@
     [self doCalculate];
     self.numberBuffer = [[NSNumber numberWithFloat:self.left] stringValue];
     self.left = 0;
+}
+
+#pragma mark CalculatorLogic
+
+- (NSString *)display {
+    if (self.op == NoneOperator) {
+        assert((self.left == 0) && (self.right == 0));
+        return self.numberBuffer;
+    } else {
+        NSString *leftStr = [[NSNumber numberWithFloat:self.left] stringValue];
+        if (self.op == PlusOperator) {
+            return [NSString stringWithFormat:@"%@+%@", leftStr, self.numberBuffer];
+        } else if (self.op == MinusOperator) {
+            return [NSString stringWithFormat:@"%@-%@", leftStr, self.numberBuffer];
+        } else if (self.op == MultipleOperator) {
+            return [NSString stringWithFormat:@"%@*%@", leftStr, self.numberBuffer];
+        } else if (self.op == DivideOperator) {
+            return [NSString stringWithFormat:@"%@/%@", leftStr, self.numberBuffer];
+        } else if (self.op == ModOperator) {
+            return [NSString stringWithFormat:@"%@ mod %@", leftStr, self.numberBuffer];
+        }
+    }
+    return @"";
 }
 @end
