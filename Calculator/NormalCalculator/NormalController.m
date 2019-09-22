@@ -18,12 +18,14 @@
 - (instancetype)init {
     self = [super init];
     _calculatorLogic = [[NormalLogic alloc] init];
+    _nameText = @"NORMAL";
+    _descriptionText = @"实现了加减乘除的简单计算器";
     return self;
 }
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.title = self.displayName;
+    self.title = self.nameText;
     self.view.backgroundColor = THEME_COLOR4;
 
     [self.view addSubview:self.calculatorScreenView];
@@ -32,9 +34,9 @@
 
 #pragma mark PropertyMethod
 
-- (NSString *)displayName {
-    if (!_displayName) _displayName = @"NORMAL";
-    return _displayName;
+- (UIImage *)accessoryImage{
+    if(!_accessoryImage) _accessoryImage = [UIImage imageNamed:@"normal"];
+    return _accessoryImage;
 }
 
 - (CalculatorScreenView *)calculatorScreenView {
@@ -81,7 +83,6 @@
         default: break;
     }
     NSString *status = [self.calculatorLogic display];
-    NSLog(@"Hello!");
     self.calculatorScreenView.text = status;
     NSLog(@"%@", status);
 }

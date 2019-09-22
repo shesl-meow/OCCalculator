@@ -17,7 +17,9 @@ NS_ASSUME_NONNULL_BEGIN
 @protocol CalculatorController <NSObject>
 
 @required
-@property(strong) NSString *displayName;
+@property(strong) NSString *nameText;
+@property(strong) NSString *descriptionText;
+@property(strong) UIImage *accessoryImage;
 @property(strong) NSObject<CalculatorLogic> *calculatorLogic;
 @property(strong) CalculatorScreenView *calculatorScreenView;
 @property(strong) CalculatorButtonsNetView *calculatorButtonsNetView;

@@ -15,7 +15,9 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface NormalController : UIViewController<CalculatorController, CalculatorClickDelegate>
 
-@property(strong) NSString *displayName;
+@property(strong) NSString *nameText;
+@property(strong) NSString *descriptionText;
+@property(strong) UIImage *accessoryImage;
 @property(strong) NormalLogic<CalculatorLogic> *calculatorLogic;
 @property(strong) CalculatorScreenView *calculatorScreenView;
 @property(strong) CalculatorButtonsNetView *calculatorButtonsNetView;

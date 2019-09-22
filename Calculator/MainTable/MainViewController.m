@@ -23,9 +23,9 @@
     [self.view addSubview:self.mainTableView];
     
     NSString *headerString = @"CALCULATOR";
-    UILabel *headerView = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT * 0.1)];
+    UILabel *headerView = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT * 0.15)];
     headerView.text = headerString;
-    headerView.font = [UIFont boldSystemFontOfSize:SCREEN_WIDTH * 0.6 / headerString.length];
+    headerView.font = [UIFont boldSystemFontOfSize:SCREEN_WIDTH * 0.75 / headerString.length];
     headerView.textAlignment = NSTextAlignmentCenter;
     self.mainTableView.tableHeaderView = headerView;
     
@@ -49,6 +49,10 @@
     [tableView deselectRowAtIndexPath:indexPath animated:NO];
 }
 
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+    return SCREEN_HEIGHT * 0.1;
+}
+
 #pragma mark - UITableViewDataSource
 
 
@@ -59,11 +63,20 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"testcell"];
+    UIViewController<CalculatorController> *calculatorController = self.calculatorControllerList[indexPath.row];
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:calculatorController.nameText];
     if (!cell) {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"testcell"];
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:calculatorController.nameText];
+        cell.textLabel.text = calculatorController.nameText;
+        cell.textLabel.font = [UIFont systemFontOfSize:SCREEN_HEIGHT * 0.03];
+        
+        cell.detailTextLabel.text = calculatorController.descriptionText;
+        cell.detailTextLabel.font = [UIFont systemFontOfSize:SCREEN_HEIGHT * 0.02];
+        
+        cell.imageView.image = calculatorController.accessoryImage;
+        
     }
-    cell.textLabel.text = self.calculatorControllerList[indexPath.row].displayName;
+    cell.textLabel.text = calculatorController.nameText;
     return cell;
 }
 
