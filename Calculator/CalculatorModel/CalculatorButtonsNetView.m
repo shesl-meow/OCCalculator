@@ -19,7 +19,13 @@
 */
 - (instancetype)initWithFrame:(CGRect)frame MaxRow:(NSUInteger)maxrow MaxColumn:(NSUInteger)maxcolumn ClickDelegate:(NSObject<CalculatorClickDelegate> *)clickDelegate{
     self = [super initWithFrame:frame];
-    _maxRow = maxrow; _maxColumn = maxcolumn; _clickDelegate = clickDelegate;
+    _maxRow = maxrow;
+    _maxColumn = maxcolumn;
+    _clickDelegate = clickDelegate;
+    _calculatorButtons = [[NSMutableArray alloc] initWithCapacity:maxrow];
+    for (int i = 0; i < maxrow; i++)
+        _calculatorButtons[i] = [[NSMutableArray alloc] initWithCapacity:maxcolumn];
+    
     CGFloat sideLength = self.bounds.size.width / maxcolumn;
     assert(self.bounds.size.height >= sideLength * maxrow);
     
@@ -30,18 +36,12 @@
             CGFloat bntX = self.bounds.origin.x + c * sideLength;
             CGRect bntFrame = CGRectMake(bntX, bntY, sideLength, sideLength);
             CalculatorButton *calculatorButton = [[CalculatorButton alloc] initWithFrame:bntFrame Row:r Column:c];
+            
             [calculatorButton addTarget:self.clickDelegate action:@selector(onClickCalculatorButton:) forControlEvents:UIControlEventTouchUpInside];
             [self addSubview:calculatorButton];
-            [self.calculatorButtons addObject:calculatorButton];
+            self.calculatorButtons[r][c] = calculatorButton;
         }
     }
     return self;
-}
-
-- (NSMutableArray<CalculatorButton *> *)calculatorButtons {
-    if (_calculatorButtons) {
-        _calculatorButtons = [NSMutableArray init];
-    }
-    return _calculatorButtons;
 }
 @end

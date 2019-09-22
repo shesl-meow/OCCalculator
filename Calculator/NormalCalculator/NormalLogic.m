@@ -103,9 +103,9 @@
         } else if (self.op == MinusOperator) {
             return [NSString stringWithFormat:@"%@-%@", leftStr, self.numberBuffer];
         } else if (self.op == MultipleOperator) {
-            return [NSString stringWithFormat:@"%@*%@", leftStr, self.numberBuffer];
+            return [NSString stringWithFormat:@"%@×%@", leftStr, self.numberBuffer];
         } else if (self.op == DivideOperator) {
-            return [NSString stringWithFormat:@"%@/%@", leftStr, self.numberBuffer];
+            return [NSString stringWithFormat:@"%@÷%@", leftStr, self.numberBuffer];
         } else if (self.op == ModOperator) {
             return [NSString stringWithFormat:@"%@ mod %@", leftStr, self.numberBuffer];
         }

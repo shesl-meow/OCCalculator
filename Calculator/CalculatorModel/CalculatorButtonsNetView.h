@@ -12,17 +12,22 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
+
 @protocol CalculatorClickDelegate;
+
 
 @interface CalculatorButtonsNetView : UIView
 
 @property(assign) NSUInteger maxRow;
 @property(assign) NSUInteger maxColumn;
-@property(nonatomic, strong) NSMutableArray <CalculatorButton *> *calculatorButtons;
+
+@property(nonatomic, strong) NSMutableArray <NSMutableArray<CalculatorButton *> *> *calculatorButtons;
 @property(weak) NSObject<CalculatorClickDelegate> *clickDelegate;
+
 - (instancetype)initWithFrame:(CGRect)frame MaxRow:(NSUInteger)maxrow MaxColumn:(NSUInteger)maxcolumn ClickDelegate:(NSObject<CalculatorClickDelegate> *)clickDelegate;
 
 @end
+
 
 @protocol CalculatorClickDelegate <NSObject>
 - (void)onClickCalculatorButton:(CalculatorButton *)sender;

@@ -16,11 +16,12 @@
 		6130006B232F780E00AA119E /* NormalLogic.m in Sources */ = {isa = PBXBuildFile; fileRef = 6130006A232F780E00AA119E /* NormalLogic.m */; };
 		61300071232F8EE500AA119E /* CalculatorButtonsNetView.m in Sources */ = {isa = PBXBuildFile; fileRef = 61300070232F8EE500AA119E /* CalculatorButtonsNetView.m */; };
 		613000752330730200AA119E /* CalculatorScreenView.m in Sources */ = {isa = PBXBuildFile; fileRef = 613000742330730200AA119E /* CalculatorScreenView.m */; };
-		6146E03E233718DF00DB8FE3 /* normal.png in Resources */ = {isa = PBXBuildFile; fileRef = 6146E03D233718DF00DB8FE3 /* normal.png */; };
+		6146E0452337477600DB8FE3 /* NormalButtonsNetView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6146E0442337477600DB8FE3 /* NormalButtonsNetView.m */; };
+		6146E0492337662B00DB8FE3 /* JumpGameView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6146E0482337662B00DB8FE3 /* JumpGameView.m */; };
+		6146E04C2337728B00DB8FE3 /* JumpGameScenes.m in Sources */ = {isa = PBXBuildFile; fileRef = 6146E04B2337728B00DB8FE3 /* JumpGameScenes.m */; };
 		615C14C5233383AE0066EA9A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 615C14C4233383AE0066EA9A /* Assets.xcassets */; };
 		6162C05F2334DCE40097F079 /* CalculatorButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 6162C05E2334DCE40097F079 /* CalculatorButton.m */; };
 		61BF3DBD23336F7C00DC57F3 /* NormalController.m in Sources */ = {isa = PBXBuildFile; fileRef = 61BF3DBC23336F7C00DC57F3 /* NormalController.m */; };
-		61D38F322333A57800222C2A /* MainTableCelll.m in Sources */ = {isa = PBXBuildFile; fileRef = 61D38F312333A57800222C2A /* MainTableCelll.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -62,14 +63,17 @@
 		61300072232F926900AA119E /* CommonMacro.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CommonMacro.h; sourceTree = "<group>"; };
 		613000732330730200AA119E /* CalculatorScreenView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CalculatorScreenView.h; sourceTree = "<group>"; };
 		613000742330730200AA119E /* CalculatorScreenView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CalculatorScreenView.m; sourceTree = "<group>"; };
-		6146E03D233718DF00DB8FE3 /* normal.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = normal.png; path = ../../../../../Downloads/normal.png; sourceTree = "<group>"; };
+		6146E0432337477600DB8FE3 /* NormalButtonsNetView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NormalButtonsNetView.h; sourceTree = "<group>"; };
+		6146E0442337477600DB8FE3 /* NormalButtonsNetView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NormalButtonsNetView.m; sourceTree = "<group>"; };
+		6146E0472337662B00DB8FE3 /* JumpGameView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JumpGameView.h; sourceTree = "<group>"; };
+		6146E0482337662B00DB8FE3 /* JumpGameView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JumpGameView.m; sourceTree = "<group>"; };
+		6146E04A2337728B00DB8FE3 /* JumpGameScenes.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JumpGameScenes.h; sourceTree = "<group>"; };
+		6146E04B2337728B00DB8FE3 /* JumpGameScenes.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JumpGameScenes.m; sourceTree = "<group>"; };
 		615C14C4233383AE0066EA9A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		6162C05D2334DCE40097F079 /* CalculatorButton.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CalculatorButton.h; sourceTree = "<group>"; };
 		6162C05E2334DCE40097F079 /* CalculatorButton.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CalculatorButton.m; sourceTree = "<group>"; };
 		61BF3DBB23336F7C00DC57F3 /* NormalController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NormalController.h; sourceTree = "<group>"; };
 		61BF3DBC23336F7C00DC57F3 /* NormalController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NormalController.m; sourceTree = "<group>"; };
-		61D38F302333A57800222C2A /* MainTableCelll.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MainTableCelll.h; sourceTree = "<group>"; };
-		61D38F312333A57800222C2A /* MainTableCelll.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MainTableCelll.m; sourceTree = "<group>"; };
 		61D38F352334900600222C2A /* CalculatorLogic.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CalculatorLogic.h; sourceTree = "<group>"; };
 		61D38F3923349DB200222C2A /* CalculatorController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CalculatorController.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -122,7 +126,7 @@
 		61300036232F66DC00AA119E /* Calculator */ = {
 			isa = PBXGroup;
 			children = (
-				6146E03C2337187F00DB8FE3 /* Resources */,
+				6146E046233765C100DB8FE3 /* AnimationBox */,
 				61D38F3C2334A47800222C2A /* NormalCalculator */,
 				61D38F33233486DC00222C2A /* CalculatorModel */,
 				61E8B9E623338D1E00A96AEA /* MainTable */,
@@ -155,12 +159,15 @@
 			path = CalculatorUITests;
 			sourceTree = "<group>";
 		};
-		6146E03C2337187F00DB8FE3 /* Resources */ = {
+		6146E046233765C100DB8FE3 /* AnimationBox */ = {
 			isa = PBXGroup;
 			children = (
-				6146E03D233718DF00DB8FE3 /* normal.png */,
+				6146E0472337662B00DB8FE3 /* JumpGameView.h */,
+				6146E0482337662B00DB8FE3 /* JumpGameView.m */,
+				6146E04A2337728B00DB8FE3 /* JumpGameScenes.h */,
+				6146E04B2337728B00DB8FE3 /* JumpGameScenes.m */,
 			);
-			path = Resources;
+			path = AnimationBox;
 			sourceTree = "<group>";
 		};
 		61D38F33233486DC00222C2A /* CalculatorModel */ = {
@@ -183,6 +190,8 @@
 			children = (
 				61300069232F780E00AA119E /* NormalLogic.h */,
 				6130006A232F780E00AA119E /* NormalLogic.m */,
+				6146E0432337477600DB8FE3 /* NormalButtonsNetView.h */,
+				6146E0442337477600DB8FE3 /* NormalButtonsNetView.m */,
 				61BF3DBB23336F7C00DC57F3 /* NormalController.h */,
 				61BF3DBC23336F7C00DC57F3 /* NormalController.m */,
 			);
@@ -194,8 +203,6 @@
 			children = (
 				6130003A232F66DC00AA119E /* MainViewController.h */,
 				6130003B232F66DC00AA119E /* MainViewController.m */,
-				61D38F302333A57800222C2A /* MainTableCelll.h */,
-				61D38F312333A57800222C2A /* MainTableCelll.m */,
 			);
 			path = MainTable;
 			sourceTree = "<group>";
@@ -305,7 +312,6 @@
 			files = (
 				61300044232F66DD00AA119E /* LaunchScreen.storyboard in Resources */,
 				615C14C5233383AE0066EA9A /* Assets.xcassets in Resources */,
-				6146E03E233718DF00DB8FE3 /* normal.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -330,10 +336,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6146E0452337477600DB8FE3 /* NormalButtonsNetView.m in Sources */,
 				6162C05F2334DCE40097F079 /* CalculatorButton.m in Sources */,
+				6146E04C2337728B00DB8FE3 /* JumpGameScenes.m in Sources */,
 				6130006B232F780E00AA119E /* NormalLogic.m in Sources */,
 				613000752330730200AA119E /* CalculatorScreenView.m in Sources */,
-				61D38F322333A57800222C2A /* MainTableCelll.m in Sources */,
+				6146E0492337662B00DB8FE3 /* JumpGameView.m in Sources */,
 				61300071232F8EE500AA119E /* CalculatorButtonsNetView.m in Sources */,
 				6130003C232F66DC00AA119E /* MainViewController.m in Sources */,
 				61300047232F66DD00AA119E /* main.m in Sources */,

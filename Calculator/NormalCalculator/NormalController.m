@@ -30,6 +30,7 @@
 
     [self.view addSubview:self.calculatorScreenView];
     [self.view addSubview:self.calculatorButtonsNetView];
+    [self.view addSubview:self.jumpGameView];
 }
 
 #pragma mark PropertyMethod
@@ -41,7 +42,7 @@
 
 - (CalculatorScreenView *)calculatorScreenView {
     if(!_calculatorScreenView) {
-        CGRect frame = CGRectMake(SCREEN_WIDTH*0.05, SCREEN_HEIGHT*0.15, SCREEN_WIDTH * 0.9, SCREEN_HEIGHT * 0.1);
+        CGRect frame = CGRectMake(SCREEN_WIDTH*0.05, SCREEN_HEIGHT*0.15, SCREEN_WIDTH * 0.9, SCREEN_HEIGHT * 0.12 - SCREEN_WIDTH * 0.05);
         _calculatorScreenView = [[CalculatorScreenView alloc] initWithFrame:frame];
     }
     return _calculatorScreenView;
@@ -49,10 +50,18 @@
 
 - (CalculatorButtonsNetView *)calculatorButtonsNetView {
     if (!_calculatorButtonsNetView) {
-        CGRect frame = CGRectMake(SCREEN_WIDTH*0.05, SCREEN_HEIGHT*0.3, SCREEN_WIDTH*0.9, SCREEN_HEIGHT*0.6);
-        _calculatorButtonsNetView = [[CalculatorButtonsNetView alloc] initWithFrame:frame MaxRow:ROW_AMOUNT MaxColumn:COLUMN_AMOUNT ClickDelegate:self];
+        CGRect frame = CGRectMake(SCREEN_WIDTH*0.05, SCREEN_HEIGHT*0.27, SCREEN_WIDTH*0.9, SCREEN_HEIGHT*0.53);
+        _calculatorButtonsNetView = [[NormalButtonsNetView alloc] initNetWithFrame:frame ClickDelegate:self];
     }
     return _calculatorButtonsNetView;
+}
+
+- (JumpGameView *)jumpGameView {
+    if(!_jumpGameView) {
+        CGRect frame = CGRectMake(0, SCREEN_HEIGHT*0.8, SCREEN_WIDTH, SCREEN_HEIGHT * 0.15);
+        _jumpGameView = [[JumpGameView alloc] initWithFrame:frame];
+    }
+    return _jumpGameView;
 }
 
 #pragma mark CaculatorClickDelegate
@@ -80,6 +89,7 @@
         case DivideButton   :[self.calculatorLogic push:DivideOperator]; break;
         case ModButton      :[self.calculatorLogic push:ModOperator]; break;
         case EqualButton    :[self.calculatorLogic equal]; break;
+        case NoneButton     :[self.jumpGameView jumpUpAnimation]; break;
         default: break;
     }
     NSString *status = [self.calculatorLogic display];

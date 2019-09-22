@@ -9,7 +9,9 @@
 #import <UIKit/UIKit.h>
 #import "../CalculatorModel/CalculatorController.h"
 #import "../CalculatorModel/CalculatorButtonsNetView.h"
+#import "../AnimationBox/JumpGameView.h"
 #import "NormalLogic.h"
+#import "NormalButtonsNetView.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -18,9 +20,13 @@ NS_ASSUME_NONNULL_BEGIN
 @property(strong) NSString *nameText;
 @property(strong) NSString *descriptionText;
 @property(strong) UIImage *accessoryImage;
+
 @property(strong) NormalLogic<CalculatorLogic> *calculatorLogic;
 @property(strong) CalculatorScreenView *calculatorScreenView;
-@property(strong) CalculatorButtonsNetView *calculatorButtonsNetView;
+@property(strong) NormalButtonsNetView *calculatorButtonsNetView;
+
+@property(strong) JumpGameView *jumpGameView;
+
 - (void)onClickCalculatorButton:(CalculatorButton *)sender;
 
 @end

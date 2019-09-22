@@ -22,6 +22,12 @@ typedef NS_ENUM(NSInteger, CalculatorOperator) {
     ModOperator
 };
 
+#define NUM2COLOR(__rgbValue, __rgbAlpha) \
+    [UIColor colorWithRed:((float)((__rgbValue & 0xFF0000) >> 16))/255.0 \
+                    green:((float)((__rgbValue & 0x00FF00) >>  8))/255.0 \
+                    blue:((float)((__rgbValue & 0x0000FF) >>  0))/255.0 \
+                    alpha:__rgbAlpha]
+
 
 #define THEME_COLOR1 [UIColor colorWithRed:0x00/255.0 green:0x00/255.0 blue:0x00/255.0 alpha:1]
 #define THEME_COLOR2 [UIColor colorWithRed:0x00/255.0 green:0x71/255.0 blue:0x75/255.0 alpha:1]
