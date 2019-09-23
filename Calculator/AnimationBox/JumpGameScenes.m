@@ -19,6 +19,8 @@
         _buildingColor = [[UIColor alloc] init];
         _obstacleColor = [[UIColor alloc] init];
         _sheslColor = [[UIColor alloc] init];
+        _buildingsList = [[NSMutableArray alloc] init];
+        _obstacleImage = [[UIImage alloc] init];
     }
     return self;
 }
@@ -38,6 +40,12 @@
         scene1.buildingColor = NUM2COLOR(0x004F71, 1);
         scene1.obstacleColor = NUM2COLOR(0x757575, 1);
         scene1.sheslColor = NUM2COLOR(0xFBFBFF, 1);
+        
+        for(int i = 0; i < 10; ++i){
+            [scene1.buildingsList addObject:[UIImage imageNamed:[NSString stringWithFormat:@"tree%d", i]]];
+        }
+        
+        scene1.obstacleImage = [UIImage imageNamed:@"dart"];
         _scenes[0] =  scene1;
         
         [self randomPickScene];
@@ -45,13 +53,21 @@
     return self;
 }
 
+- (JumpGameSceneModel *)currentScene {
+    return _scenes[currentIndex];
+}
+
+#pragma mark Random
+
 - (JumpGameSceneModel *)randomPickScene {
     currentIndex = arc4random_uniform(self.scenes.count);
     return _scenes[currentIndex];
 }
 
-- (JumpGameSceneModel *)currentScene {
-    return _scenes[currentIndex];
+- (UIImage *)randomPickBuilding {
+    NSMutableArray <UIImage *> *buildings = self.currentScene.buildingsList;
+    NSUInteger randomIndex = arc4random_uniform(buildings.count);
+    return buildings[randomIndex];
 }
 
 @end

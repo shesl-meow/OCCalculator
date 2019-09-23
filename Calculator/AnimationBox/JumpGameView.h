@@ -13,14 +13,18 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface JumpGameView : UIView
 
-@property(strong, nonatomic) UIImageView *runningShesl;
-@property(strong) UIView *bottomGround;
+@property(nonatomic, strong) JumpGameScenes *jumpGameScenes;
 
-@property(strong, nonatomic) JumpGameScenes *jumpGameScenes;
+@property(nonatomic, strong) UIImageView *runningShesl;
+- (void)jumpUp;
 
-@property(assign) NSInteger jumpDuration;
-- (void)jumpUpAnimation;
-- (void)jumpDownAnimation;
+@property(nonatomic, strong) UIView *bottomGround;
+
+@property(nonatomic, strong) NSMutableArray<UIImageView *> *buildingsView;
+- (void)buildingMoveForIndex:(NSUInteger)index;
+
+@property(nonatomic, strong) NSMutableArray<UIImageView *> *obstaclesView;
+- (void)obstacleMoveForIndex:(NSUInteger)index;
 
 @end
 

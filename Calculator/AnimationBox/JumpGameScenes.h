@@ -18,6 +18,8 @@ NS_ASSUME_NONNULL_BEGIN
 @property(strong) UIColor *buildingColor;
 @property(strong) UIColor *obstacleColor;
 @property(strong) UIColor *sheslColor;
+@property(strong) NSMutableArray <UIImage *> *buildingsList;
+@property(strong) UIImage *obstacleImage;
 
 @end
 
@@ -25,11 +27,12 @@ NS_ASSUME_NONNULL_BEGIN
 @interface JumpGameScenes : NSObject{
     NSUInteger currentIndex;
 }
-
 @property(strong) NSMutableArray <JumpGameSceneModel *> *scenes;
 
-- (JumpGameSceneModel *)randomPickScene;
 - (JumpGameSceneModel *)currentScene;
+
+- (JumpGameSceneModel *)randomPickScene;
+- (UIImage *)randomPickBuilding;
 
 @end
 

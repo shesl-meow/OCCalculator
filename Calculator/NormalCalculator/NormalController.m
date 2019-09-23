@@ -89,7 +89,7 @@
         case DivideButton   :[self.calculatorLogic push:DivideOperator]; break;
         case ModButton      :[self.calculatorLogic push:ModOperator]; break;
         case EqualButton    :[self.calculatorLogic equal]; break;
-        case NoneButton     :[self.jumpGameView jumpUpAnimation]; break;
+        case NoneButton     :[self.jumpGameView jumpUp]; break;
         default: break;
     }
     NSString *status = [self.calculatorLogic display];
