@@ -60,6 +60,7 @@
     if(!_jumpGameView) {
         CGRect frame = CGRectMake(0, SCREEN_HEIGHT*0.8, SCREEN_WIDTH, SCREEN_HEIGHT * 0.15);
         _jumpGameView = [[JumpGameView alloc] initWithFrame:frame];
+        _jumpGameView.jumpFailedDelegate = self;
     }
     return _jumpGameView;
 }
@@ -95,6 +96,13 @@
     NSString *status = [self.calculatorLogic display];
     self.calculatorScreenView.text = status;
     NSLog(@"%@", status);
+}
+
+#pragma mark JumpFailedDelegate
+
+- (void)gameFailedHandler {
+    [self.calculatorLogic clear];
+    self.calculatorScreenView.text = self.calculatorLogic.display;
 }
 
 @end

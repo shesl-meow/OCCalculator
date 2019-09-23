@@ -11,21 +11,15 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface JumpGameView : UIView
-
-@property(nonatomic, strong) JumpGameScenes *jumpGameScenes;
-
-@property(nonatomic, strong) UIImageView *runningShesl;
-- (void)jumpUp;
-
-@property(nonatomic, strong) UIView *bottomGround;
-
-@property(nonatomic, strong) NSMutableArray<UIImageView *> *buildingsView;
-- (void)buildingMoveForIndex:(NSUInteger)index;
-
-@property(nonatomic, strong) NSMutableArray<UIImageView *> *obstaclesView;
-- (void)obstacleMoveForIndex:(NSUInteger)index;
-
+@protocol JumpFailedDelegate <NSObject>
+- (void)gameFailedHandler;
 @end
+
+
+@interface JumpGameView : UIView
+- (void)jumpUp;
+@property(weak) NSObject<JumpFailedDelegate> *jumpFailedDelegate;
+@end
+
 
 NS_ASSUME_NONNULL_END

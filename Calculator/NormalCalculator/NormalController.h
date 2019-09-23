@@ -15,7 +15,7 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface NormalController : UIViewController<CalculatorController, CalculatorClickDelegate>
+@interface NormalController : UIViewController<CalculatorController, CalculatorClickDelegate, JumpFailedDelegate>
 
 @property(strong) NSString *nameText;
 @property(strong) NSString *descriptionText;
@@ -25,9 +25,11 @@ NS_ASSUME_NONNULL_BEGIN
 @property(strong) CalculatorScreenView *calculatorScreenView;
 @property(strong) NormalButtonsNetView *calculatorButtonsNetView;
 
+- (void)onClickCalculatorButton:(CalculatorButton *)sender;
+
 @property(strong) JumpGameView *jumpGameView;
 
-- (void)onClickCalculatorButton:(CalculatorButton *)sender;
+- (void)gameFailedHandler;
 
 @end
 

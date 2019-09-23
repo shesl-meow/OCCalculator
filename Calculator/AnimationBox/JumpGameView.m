@@ -19,10 +19,21 @@
     NSUInteger obstacleAmount;
     NSUInteger obstacleDuration;
 }
+
+@property(nonatomic, strong) JumpGameScenes *jumpGameScenes;
+@property(nonatomic, strong) UIImageView *runningShesl;
+@property(nonatomic, strong) UIView *bottomGround;
+@property(nonatomic, strong) NSMutableArray<UIImageView *> *buildingsView;
+@property(nonatomic, strong) NSMutableArray<UIImageView *> *obstaclesView;
+
 @property(strong, nonatomic) CABasicAnimation *jumpUpAnimation;
 @property(strong, nonatomic) CABasicAnimation *jumpDownAnimation;
 @property(strong, nonatomic) CABasicAnimation *buildingMoveAnimation;
 @property(strong, nonatomic) CABasicAnimation *obstacleMoveAnimation;
+
+- (void)buildingMoveForIndex:(NSUInteger)index;
+- (void)obstacleMoveForIndex:(NSUInteger)index;
+- (void)checkDangerous;
 
 @end
 
@@ -73,11 +84,15 @@
         }
         
         [self addSubview:self.runningShesl];
+        [self.runningShesl setTintColor:currentScene.sheslColor];
+        
+        NSTimer *timer = [NSTimer timerWithTimeInterval:0.1 target:self selector:@selector(checkDangerous) userInfo:nil repeats:YES];
+        [[NSRunLoop currentRunLoop] addTimer:timer forMode:NSDefaultRunLoopMode];
     }
     return self;
 }
 
-#pragma mark PublicProperty
+#pragma mark ViewsProperty
 
 - (UIImageView *)runningShesl {
     if(!_runningShesl) {
@@ -133,7 +148,7 @@
     return _obstaclesView;
 }
 
-#pragma mark ExtensionProperty
+#pragma mark AnimationProperty
 
 - (CABasicAnimation *)jumpUpAnimation {
     if(!_jumpUpAnimation) {
@@ -234,6 +249,19 @@
     dispatch_after(delay, dispatch_get_main_queue(), ^{
         [obstacleView.layer addAnimation:moveAnimation forKey:nil];
     });
+}
+
+#pragma mark GameCore
+
+- (void)checkDangerous {
+    CGRect sheslLayerFrame = [self.runningShesl.layer presentationLayer].frame;
+    for (UIImageView *obstacleView in self.obstaclesView) {
+        CGRect obstacleLayerFrame = [obstacleView.layer presentationLayer].frame;
+        if(CGRectIntersectsRect(sheslLayerFrame, obstacleLayerFrame)) {
+            [self.jumpFailedDelegate gameFailedHandler];
+            return;
+        }
+    }
 }
 
 #pragma mark CAAnimationDelegate
