@@ -7,7 +7,7 @@
 //
 
 #import "JumpGameScenes.h"
-#import "../CommonMacro.h"
+#import "../../CommonMacro.h"
 
 @implementation JumpGameSceneModel
 
@@ -60,13 +60,14 @@
 #pragma mark Random
 
 - (JumpGameSceneModel *)randomPickScene {
-    currentIndex = arc4random_uniform(self.scenes.count);
+    currentIndex = arc4random_uniform((int)self.scenes.count);
     return _scenes[currentIndex];
 }
 
 - (UIImage *)randomPickBuilding {
     NSMutableArray <UIImage *> *buildings = self.currentScene.buildingsList;
-    NSUInteger randomIndex = arc4random_uniform(buildings.count);
+//    ar
+    NSInteger randomIndex = arc4random_uniform((int)buildings.count);
     return buildings[randomIndex];
 }
 

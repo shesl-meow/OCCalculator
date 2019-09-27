@@ -7,7 +7,7 @@
 //
 
 #import "JumpGameView.h"
-#import "../CommonMacro.h"
+#import "../../CommonMacro.h"
 
 @interface JumpGameView()<CAAnimationDelegate> {
     NSUInteger jumpDuration;
@@ -18,6 +18,8 @@
     
     NSUInteger obstacleAmount;
     NSUInteger obstacleDuration;
+    
+    BOOL dieState;
 }
 
 @property(nonatomic, strong) JumpGameScenes *jumpGameScenes;
@@ -31,9 +33,12 @@
 @property(strong, nonatomic) CABasicAnimation *buildingMoveAnimation;
 @property(strong, nonatomic) CABasicAnimation *obstacleMoveAnimation;
 
-- (void)buildingMoveForIndex:(NSUInteger)index;
-- (void)obstacleMoveForIndex:(NSUInteger)index;
+- (void)playBuildingMoveForIndex:(NSUInteger)index;
+- (void)playObstacleMoveForIndex:(NSUInteger)index;
+
 - (void)checkDangerous;
+- (void)stopAllAnimations;
+- (void)continueAllAnimations;
 
 @end
 
@@ -56,6 +61,7 @@
         buildingDuration = 5;
         obstacleAmount = 1;
         obstacleDuration = 2;
+        dieState = NO;
         
         JumpGameSceneModel *currentScene = self.jumpGameScenes.currentScene;
         __weak __typeof(self) weakSelf = self;
@@ -71,7 +77,7 @@
             [self addSubview:self.buildingsView[i]];
             dispatch_time_t delay =  dispatch_time(DISPATCH_TIME_NOW, NSEC_PER_SEC * buildingDuration / buildingAmount *  i);
             dispatch_after(delay, dispatch_get_main_queue(), ^{
-                [weakSelf buildingMoveForIndex:i];
+                [weakSelf playBuildingMoveForIndex:i];
             });
         }
         
@@ -79,14 +85,14 @@
             [self addSubview:self.obstaclesView[i]];
             dispatch_time_t delay =  dispatch_time(DISPATCH_TIME_NOW, NSEC_PER_SEC * obstacleDuration / obstacleAmount *  i);
             dispatch_after(delay, dispatch_get_main_queue(), ^{
-                [weakSelf obstacleMoveForIndex:i];
+                [weakSelf playObstacleMoveForIndex:i];
             });
         }
         
         [self addSubview:self.runningShesl];
         [self.runningShesl setTintColor:currentScene.sheslColor];
         
-        NSTimer *timer = [NSTimer timerWithTimeInterval:0.1 target:self selector:@selector(checkDangerous) userInfo:nil repeats:YES];
+        NSTimer *timer = [NSTimer timerWithTimeInterval:0.05 target:self selector:@selector(checkDangerous) userInfo:nil repeats:YES];
         [[NSRunLoop currentRunLoop] addTimer:timer forMode:NSDefaultRunLoopMode];
     }
     return self;
@@ -163,8 +169,10 @@
             (a,b,c,d) = (1/3, 0, 2/3, 1/3)
             reverse (0,0) and (1,1)  =>  (a,b,c,d) = (1/3,2/3,2/3,1)
          */
-        _jumpUpAnimation.timingFunction = [CAMediaTimingFunction functionWithControlPoints:1/3 :2/3 :2/3 :1];
+        _jumpUpAnimation.timingFunction = [CAMediaTimingFunction functionWithControlPoints:(float)1/3 :(float)2/3 :(float)2/3 :1];
         _jumpUpAnimation.duration = jumpDuration;
+        _jumpUpAnimation.removedOnCompletion = NO;
+        _jumpUpAnimation.fillMode = kCAFillModeForwards;
         _jumpUpAnimation.delegate = self;
         [_jumpUpAnimation setValue:@"jumpUpAnimation" forKey:@"animationName"];
 
@@ -184,8 +192,10 @@
          
             (a,b,c,d) = (1/3, 0, 2/3, 1/3)
          */
-        _jumpDownAnimation.timingFunction = [CAMediaTimingFunction functionWithControlPoints:1/3 :0 :2/3 :1/3];
+        _jumpDownAnimation.timingFunction = [CAMediaTimingFunction functionWithControlPoints:(float)1/3 :0 :(float)2/3 :(float)1/3];
         _jumpDownAnimation.duration = jumpDuration;
+        _jumpDownAnimation.removedOnCompletion = NO;
+        _jumpDownAnimation.fillMode = kCAFillModeForwards;
         _jumpDownAnimation.delegate = self;
         [_jumpDownAnimation setValue:@"jumpDownAnimation" forKey:@"animationName"];
 
@@ -219,15 +229,15 @@
     return _obstacleMoveAnimation;
 }
 
-#pragma mark Animation
+#pragma mark PlayAnimation
 
-- (void)jumpUp {
+- (void)playJumpUp {
     if(jumpDone == NO) return;
     jumpDone = NO;
     [self.runningShesl.layer addAnimation:self.jumpUpAnimation forKey:nil];
 }
 
-- (void)buildingMoveForIndex:(NSUInteger)index {
+- (void)playBuildingMoveForIndex:(NSUInteger)index {
     UIImageView *buildingView = self.buildingsView[index];
     [buildingView setImage:self.jumpGameScenes.randomPickBuilding];
     
@@ -236,7 +246,7 @@
     [buildingView.layer addAnimation:moveAnimation forKey:nil];
 }
 
-- (void)obstacleMoveForIndex:(NSUInteger)index {
+- (void)playObstacleMoveForIndex:(NSUInteger)index {
     UIImageView *obstacleView = self.obstaclesView[index];
     CGFloat y = self.frame.size.height * 0.7 * ((float)rand() / RAND_MAX);
     CGFloat side = obstacleView.frame.size.height;
@@ -254,34 +264,109 @@
 #pragma mark GameCore
 
 - (void)checkDangerous {
-    CGRect sheslLayerFrame = [self.runningShesl.layer presentationLayer].frame;
+    CGRect sheslLayerFrame = jumpDone ? self.runningShesl.frame :[self.runningShesl.layer presentationLayer].frame;
     for (UIImageView *obstacleView in self.obstaclesView) {
         CGRect obstacleLayerFrame = [obstacleView.layer presentationLayer].frame;
         if(CGRectIntersectsRect(sheslLayerFrame, obstacleLayerFrame)) {
-            [self.jumpFailedDelegate gameFailedHandler];
+            if(!dieState){
+                dieState = YES;
+                [self.jumpFailedDelegate gameFailedHandler];
+                [self stopAllAnimations];
+                dispatch_after(
+                               dispatch_time(DISPATCH_TIME_NOW, NSEC_PER_SEC * 2), dispatch_get_main_queue(),
+                               ^{[self continueAllAnimations];}
+                               );
+            }
             return;
         }
     }
+    dieState = NO;
+}
+
+- (void)stopAllAnimations {
+    dispatch_queue_t queue = dispatch_get_main_queue();
+//    dieState = YES;
+    
+    for(UIImageView *buildingView in self.buildingsView) {
+        dispatch_async(queue, ^{
+            CFTimeInterval pauseTime = [buildingView.layer convertTime:CACurrentMediaTime() fromLayer:nil];
+            buildingView.layer.timeOffset = pauseTime;
+            buildingView.layer.speed = 0;
+        });
+    }
+    for(UIImageView *obstacleView in self.obstaclesView) {
+        dispatch_async(queue, ^{
+            CFTimeInterval pauseTime = [obstacleView.layer convertTime:CACurrentMediaTime() fromLayer:nil];
+            obstacleView.layer.timeOffset = pauseTime;
+            obstacleView.layer.speed = 0;
+        });
+    }
+    dispatch_async(queue, ^{
+        CFTimeInterval pauseTime = [self.runningShesl.layer  convertTime:CACurrentMediaTime() fromLayer:nil];
+        self.runningShesl.layer.timeOffset = pauseTime;
+        self.runningShesl.layer.speed = 0;
+    });
+}
+
+- (void)continueAllAnimations {
+    dispatch_queue_t queue = dispatch_get_main_queue();
+    dispatch_group_t group = dispatch_group_create();
+    dispatch_group_enter(group);
+    
+    for (UIImageView *buildingView in self.buildingsView) {
+        dispatch_async(queue, ^{
+            CFTimeInterval pauseTime = buildingView.layer.timeOffset;
+            buildingView.layer.timeOffset = 0;
+            buildingView.layer.beginTime = CACurrentMediaTime() - pauseTime;
+            buildingView.layer.speed = 1;
+        });
+    }
+    
+    for (UIImageView *obstacleView in self.obstaclesView) {
+        dispatch_async(queue, ^{
+            CFTimeInterval pauseTime = obstacleView.layer.timeOffset;
+            obstacleView.layer.timeOffset = 0;
+            obstacleView.layer.beginTime = CACurrentMediaTime() - pauseTime;
+            obstacleView.layer.speed = 1;
+        });
+    }
+    
+    dispatch_async(queue, ^{
+        CFTimeInterval pauseTime = self.runningShesl.layer.timeOffset;        
+        self.runningShesl.layer.timeOffset = 0;
+        self.runningShesl.layer.beginTime = CACurrentMediaTime() - pauseTime;
+        self.runningShesl.layer.speed = 1;
+    });
+    dispatch_group_leave(group);
+//    dispatch_group_notify(group, queue, ^{self->dieState = NO;});
 }
 
 #pragma mark CAAnimationDelegate
 
 - (void)animationDidStop:(CAAnimation *)anim finished:(BOOL)flag {
-    id animationName = [anim valueForKey:@"animationName"];
-    if ([animationName isEqualToString:@"jumpUpAnimation"])
-    {
-        [self.runningShesl.layer addAnimation:self.jumpDownAnimation forKey:nil];
-    } else if ([animationName isEqualToString:@"jumpDownAnimation"])
-    {
-        jumpDone = YES;
-    } else if ([animationName isEqualToString:@"buildingMoveAnimation"])
-    {
-        NSNumber *index = [anim valueForKey:@"animationIndex"];
-        [self buildingMoveForIndex:[index unsignedIntegerValue]];
-    } else if ([animationName isEqualToString:@"obstacleMoveAnimation"])
-    {
-        NSNumber *index = [anim valueForKey:@"animationIndex"];
-        [self obstacleMoveForIndex:[index unsignedIntegerValue]];
+    NSString *animationName = [anim valueForKey:@"animationName"];
+    if (flag) {
+        if ([animationName isEqualToString:@"jumpUpAnimation"])
+        {
+            [self.runningShesl.layer addAnimation:self.jumpDownAnimation forKey:nil];
+        } else if ([animationName isEqualToString:@"jumpDownAnimation"])
+        {
+            jumpDone = YES;
+        } else if ([animationName isEqualToString:@"buildingMoveAnimation"])
+        {
+            NSNumber *index = [anim valueForKey:@"animationIndex"];
+            [self playBuildingMoveForIndex:[index unsignedIntegerValue]];
+        } else if ([animationName isEqualToString:@"obstacleMoveAnimation"])
+        {
+            NSNumber *index = [anim valueForKey:@"animationIndex"];
+            [self playObstacleMoveForIndex:[index unsignedIntegerValue]];
+        }
+    } else {
+        if ([animationName  isEqual: @"jumpUpAnimation"]) {
+            jumpDone = YES;
+        }  else if ([animationName isEqual: @"jumpDownAnimation"]) {
+            jumpDone = YES;
+        }
     }
 }
 @end

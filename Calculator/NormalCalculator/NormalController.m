@@ -15,6 +15,12 @@
 
 @implementation NormalController
 
+@synthesize nameText = _nameText;
+@synthesize descriptionText = _descriptionText;
+@synthesize accessoryImage = _accessoryImage;
+@synthesize calculatorScreenView = _calculatorScreenView;
+@synthesize calculatorButtonsNetView = _calculatorButtonsNetView;
+
 - (instancetype)init {
     self = [super init];
     _calculatorLogic = [[NormalLogic alloc] init];
@@ -90,7 +96,7 @@
         case DivideButton   :[self.calculatorLogic push:DivideOperator]; break;
         case ModButton      :[self.calculatorLogic push:ModOperator]; break;
         case EqualButton    :[self.calculatorLogic equal]; break;
-        case NoneButton     :[self.jumpGameView jumpUp]; break;
+        case NoneButton     :[self.jumpGameView playJumpUp]; break;
         default: break;
     }
     NSString *status = [self.calculatorLogic display];

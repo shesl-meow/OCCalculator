@@ -20,10 +20,10 @@ NS_ASSUME_NONNULL_BEGIN
 @property(strong) NSString *nameText;
 @property(strong) NSString *descriptionText;
 @property(strong) UIImage *accessoryImage;
-@property(strong) NSObject<CalculatorLogic> *calculatorLogic;
-@property(strong) CalculatorScreenView *calculatorScreenView;
-@property(strong) CalculatorButtonsNetView *calculatorButtonsNetView;
-- (void)clickCalculatorButton:(CalculatorButtonsNetView *)sender;
+@property(strong, nonatomic) NSObject<CalculatorLogic> *calculatorLogic;
+@property(strong, nonatomic) CalculatorScreenView *calculatorScreenView;
+@property(strong, nonatomic) CalculatorButtonsNetView *calculatorButtonsNetView;
+- (void)onClickCalculatorButton:(CalculatorButton *)sender;
 
 @end
 

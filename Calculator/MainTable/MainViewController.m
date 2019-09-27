@@ -9,6 +9,7 @@
 #import "MainViewController.h"
 #import "../CalculatorModel/CalculatorController.h"
 #import "../NormalCalculator/NormalController.h"
+#import "../ScienceCalculator/ScienceController.h"
 
 @interface MainViewController ()<UITableViewDelegate, UITableViewDataSource>
 
@@ -35,7 +36,7 @@
 
 - (NSMutableArray<UIViewController<CalculatorController> *> *)calculatorControllerList {
     if (!_calculatorControllerList) {
-        _calculatorControllerList = [[NSMutableArray alloc] initWithObjects:[[NormalController alloc] init], nil];
+        _calculatorControllerList = [[NSMutableArray alloc] initWithObjects:[[NormalController alloc] init], [[ScienceController alloc] init], nil];
     }
     return _calculatorControllerList;
 }

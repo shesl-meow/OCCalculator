@@ -11,8 +11,8 @@
 
 @interface MainViewController : UIViewController
 
-@property(strong) UITableView *mainTableView;
-@property(strong) NSMutableArray<UIViewController<CalculatorController> *> *calculatorControllerList;
+@property(strong, nonatomic) UITableView *mainTableView;
+@property(strong, nonatomic) NSMutableArray<UIViewController<CalculatorController> *> *calculatorControllerList;
 
 @end
 

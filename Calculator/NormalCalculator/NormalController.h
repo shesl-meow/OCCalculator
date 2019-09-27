@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "../CalculatorModel/CalculatorController.h"
 #import "../CalculatorModel/CalculatorButtonsNetView.h"
-#import "../AnimationBox/JumpGameView.h"
+#import "../AnimationBox/JumpGame/JumpGameView.h"
 #import "NormalLogic.h"
 #import "NormalButtonsNetView.h"
 
@@ -17,18 +17,10 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface NormalController : UIViewController<CalculatorController, CalculatorClickDelegate, JumpFailedDelegate>
 
-@property(strong) NSString *nameText;
-@property(strong) NSString *descriptionText;
-@property(strong) UIImage *accessoryImage;
+@property(strong, nonatomic) NormalLogic<CalculatorLogic> *calculatorLogic;
+@property(strong, nonatomic) NormalButtonsNetView *calculatorButtonsNetView;
 
-@property(strong) NormalLogic<CalculatorLogic> *calculatorLogic;
-@property(strong) CalculatorScreenView *calculatorScreenView;
-@property(strong) NormalButtonsNetView *calculatorButtonsNetView;
-
-- (void)onClickCalculatorButton:(CalculatorButton *)sender;
-
-@property(strong) JumpGameView *jumpGameView;
-
+@property(strong, nonatomic) JumpGameView *jumpGameView;
 - (void)gameFailedHandler;
 
 @end
