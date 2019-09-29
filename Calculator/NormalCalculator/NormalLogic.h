@@ -11,26 +11,6 @@
 #import "../CalculatorModel/CalculatorLogic.h"
 #import "../CalculatorModel/CalculatorButton.h"
 
-NS_ASSUME_NONNULL_BEGIN
-
-@interface NormalLogic : NSObject<CalculatorLogic>
-- (NSString *)display;
-- (void)onClickCalculatorButton:(CalculatorButton *)sender;
-
-@property(strong) NSString *numberBuffer;
-@property(assign) float left;
-@property(assign) float right;
-@property(assign) CalculatorOperator op;
-- (void)clear;
-- (void)back;
-- (void)append:(NSString *)number;
-- (void)push:(CalculatorOperator)op;
-- (void)equal;
-- (float)doCalculate;
-@end
-
-NS_ASSUME_NONNULL_END
-
 /*
  Create button:
  AC      Back    %       /
@@ -67,3 +47,24 @@ typedef NS_OPTIONS(NSUInteger, CalculatorButtonName) {
     
     NoneButton      = BTN_CONVERT(4, 0),
 };
+
+
+NS_ASSUME_NONNULL_BEGIN
+
+@interface NormalLogic : NSObject<CalculatorLogic>
+- (NSString *)display;
+- (void)onClickCalculatorButton:(CalculatorButton *)sender;
+
+@property(strong) NSString *numberBuffer;
+@property(assign) float left;
+@property(assign) float right;
+@property(assign) CalculatorOperator op;
+- (void)clear;
+- (void)back;
+- (void)append:(NSString *)number;
+- (void)push:(CalculatorOperator)op;
+- (void)equal;
+- (float)doCalculate;
+@end
+
+NS_ASSUME_NONNULL_END

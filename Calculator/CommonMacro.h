@@ -14,6 +14,7 @@
 #define SCREEN_HEIGHT [UIScreen mainScreen].bounds.size.height
 
 typedef NS_ENUM(NSInteger, CalculatorOperator) {
+    CalculatorOperatorNone = 0,
     NoneOperator,
     PlusOperator,
     MinusOperator,

@@ -10,14 +10,12 @@
 
 @implementation CalculatorButtonsNetView
 
-/*
-// Only override drawRect: if you perform custom drawing.
-// An empty implementation adversely affects performance during animation.
-- (void)drawRect:(CGRect)rect {
-    // Drawing code
-}
-*/
-- (instancetype)initWithFrame:(CGRect)frame MaxRow:(NSUInteger)maxrow MaxColumn:(NSUInteger)maxcolumn ClickDelegate:(NSObject<CalculatorClickDelegate> *)clickDelegate{
+
+- (instancetype)initWithFrame:(CGRect)frame
+                       MaxRow:(NSUInteger)maxrow
+                    MaxColumn:(NSUInteger)maxcolumn
+                ClickDelegate:(NSObject<CalculatorClickDelegate> *)clickDelegate
+{
     self = [super initWithFrame:frame];
     _maxRow = maxrow;
     _maxColumn = maxcolumn;

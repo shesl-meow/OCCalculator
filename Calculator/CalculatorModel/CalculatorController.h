@@ -23,6 +23,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property(strong, nonatomic) NSObject<CalculatorLogic> *calculatorLogic;
 @property(strong, nonatomic) CalculatorScreenView *calculatorScreenView;
 @property(strong, nonatomic) CalculatorButtonsNetView *calculatorButtonsNetView;
+
 - (void)onClickCalculatorButton:(CalculatorButton *)sender;
 
 @end

@@ -12,7 +12,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface PendulumView : UIView
 
-@property(strong, nonatomic) NSMutableArray<UIView *> *circleViews;
+@property(nonatomic, strong) NSMutableArray<UIView *> *circleViews;
 
 @property(strong, nonatomic) NSMutableArray<UIView *> *shadowViews;
 

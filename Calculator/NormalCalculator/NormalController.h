@@ -21,6 +21,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property(strong, nonatomic) NormalButtonsNetView *calculatorButtonsNetView;
 
 @property(strong, nonatomic) JumpGameView *jumpGameView;
+
 - (void)gameFailedHandler;
 
 @end

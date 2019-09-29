@@ -16,7 +16,9 @@ NS_ASSUME_NONNULL_BEGIN
 @property(assign) NSUInteger row;
 @property(assign) NSUInteger column;
 
-- (instancetype)initWithFrame:(CGRect)frame Row:(NSUInteger)row Column:(NSUInteger)column;
+- (instancetype)initWithFrame:(CGRect)frame
+                          Row:(NSUInteger)row
+                       Column:(NSUInteger)column;
 - (void)setImageWithName:(NSString *)imageName;
 
 @end

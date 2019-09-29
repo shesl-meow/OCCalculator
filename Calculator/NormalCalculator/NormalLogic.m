@@ -10,12 +10,15 @@
 
 @implementation NormalLogic
 
-- (instancetype)init {
+- (instancetype)init
+{
     self = [super init];
-    self.numberBuffer = @"";
-    self.left = 0;
-    self.right = 0;
-    self.op = NoneOperator;
+    if (self) {
+        _numberBuffer = @"";
+        self.left = 0;
+        self.right = 0;
+        self.op = NoneOperator;
+    }
     return self;
 }
 

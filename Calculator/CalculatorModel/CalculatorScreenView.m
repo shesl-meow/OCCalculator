@@ -10,14 +10,8 @@
 
 @implementation CalculatorScreenView
 
-/*
-// Only override drawRect: if you perform custom drawing.
-// An empty implementation adversely affects performance during animation.
-- (void)drawRect:(CGRect)rect {
-    // Drawing code
-}
-*/
-- (instancetype)initWithFrame:(CGRect)frame {
+- (instancetype)initWithFrame:(CGRect)frame
+{
     self = [super initWithFrame:frame];    
     if (self) {
         CGFloat fontSize = self.bounds.size.width / 12, radiusSize = 10;
@@ -32,7 +26,7 @@
         self.layer.borderColor = [THEME_COLOR1 colorWithAlphaComponent:0.5].CGColor;
         self.layer.cornerRadius = radiusSize;
         
-        self.textContainerInset = UIEdgeInsetsMake(self.bounds.size.height/2 - fontSize/2, self.bounds.size.height/2 - fontSize/2 - radiusSize, fontSize, fontSize);
+        self.textContainerInset = UIEdgeInsetsMake(self.bounds.size.height / 2 - fontSize/2, self.bounds.size.height/2 - fontSize/2 - radiusSize, fontSize, fontSize);
         
         self.editable = NO;
         self.scrollEnabled = NO;

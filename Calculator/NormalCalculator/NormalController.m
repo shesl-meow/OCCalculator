@@ -33,7 +33,7 @@
     [super viewDidLoad];
     self.title = self.nameText;
     self.view.backgroundColor = THEME_COLOR4;
-
+    
     [self.view addSubview:self.calculatorScreenView];
     [self.view addSubview:self.calculatorButtonsNetView];
     [self.view addSubview:self.jumpGameView];
@@ -48,7 +48,7 @@
 
 - (CalculatorScreenView *)calculatorScreenView {
     if(!_calculatorScreenView) {
-        CGRect frame = CGRectMake(SCREEN_WIDTH*0.05, SCREEN_HEIGHT*0.15, SCREEN_WIDTH * 0.9, SCREEN_HEIGHT * 0.12 - SCREEN_WIDTH * 0.05);
+        CGRect frame = CGRectMake(SCREEN_WIDTH * 0.05, SCREEN_HEIGHT*0.15, SCREEN_WIDTH * 0.9, SCREEN_HEIGHT * 0.12 - SCREEN_WIDTH * 0.05);
         _calculatorScreenView = [[CalculatorScreenView alloc] initWithFrame:frame];
     }
     return _calculatorScreenView;
@@ -73,8 +73,9 @@
 
 #pragma mark CaculatorClickDelegate
 
-- (void)onClickCalculatorButton:(CalculatorButton *)sender{
-    NSLog(@"Detect button click!(%lu, %lu)",sender.row, sender.column);
+- (void)onClickCalculatorButton:(CalculatorButton *)sender
+{
+    NSLog(@"Detect button click!(%lu, %lu)", sender.row, sender.column);
     CalculatorButtonName calculatorbuttonName = BTN_CONVERT(sender.row, sender.column);
     switch (calculatorbuttonName) {
         case ClearButton    :[self.calculatorLogic clear]; break;
@@ -106,7 +107,8 @@
 
 #pragma mark JumpFailedDelegate
 
-- (void)gameFailedHandler {
+- (void)gameFailedHandler
+{
     [self.calculatorLogic clear];
     self.calculatorScreenView.text = self.calculatorLogic.display;
 }

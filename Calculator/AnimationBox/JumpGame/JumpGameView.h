@@ -12,13 +12,18 @@
 NS_ASSUME_NONNULL_BEGIN
 
 @protocol JumpFailedDelegate <NSObject>
+
 - (void)gameFailedHandler;
+
 @end
 
 
 @interface JumpGameView : UIView
-- (void)playJumpUp;
+
 @property(weak) NSObject<JumpFailedDelegate> *jumpFailedDelegate;
+
+- (void)playJumpUp;
+
 @end
 
 

@@ -24,7 +24,8 @@
     return self;
 }
 
-- (void)setImageWithName:(NSString *)imageName{
+- (void)setImageWithName:(NSString *)imageName
+{
     [super setImage:[UIImage imageNamed:imageName] forState:UIControlStateNormal];
     
     CGFloat side = self.bounds.size.width * 0.2;
