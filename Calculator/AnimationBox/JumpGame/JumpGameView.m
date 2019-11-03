@@ -48,11 +48,13 @@
 /*
 // Only override drawRect: if you perform custom drawing.
 // An empty implementation adversely affects performance during animation.
-- (void)drawRect:(CGRect)rect {
+- (void)drawRect:(CGRect)rect 
+{
     // Drawing code
 }
 */
-- (instancetype)initWithFrame:(CGRect)frame {
+- (instancetype)initWithFrame:(CGRect)frame 
+{
     self = [super initWithFrame:frame];
     if (self) {
         jumpDuration = 1;
@@ -100,7 +102,8 @@
 
 #pragma mark ViewsProperty
 
-- (UIImageView *)runningShesl {
+- (UIImageView *)runningShesl 
+{
     if(!_runningShesl) {
         _runningShesl = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"shesl"]];
         CGFloat side = self.bounds.size.height * 0.3;
@@ -111,7 +114,8 @@
     return _runningShesl;
 }
 
-- (UIView *)bottomGround {
+- (UIView *)bottomGround 
+{
     if(!_bottomGround) {
         _bottomGround = [[UIView alloc] initWithFrame: CGRectMake(self.bounds.origin.x, self.bounds.origin.y + self.bounds.size.height * 0.9, self.bounds.size.width, self.bounds.size.height * 0.1)];
         [_bottomGround setBackgroundColor:self.jumpGameScenes.currentScene.bottomgroundColor];
@@ -119,14 +123,16 @@
     return _bottomGround;
 }
 
-- (JumpGameScenes *)jumpGameScenes {
+- (JumpGameScenes *)jumpGameScenes 
+{
     if(!_jumpGameScenes){
         _jumpGameScenes = [[JumpGameScenes alloc] init];
     }
     return _jumpGameScenes;
 }
 
-- (NSMutableArray<UIImageView *> *)buildingsView {
+- (NSMutableArray<UIImageView *> *)buildingsView 
+{
     if(!_buildingsView) {
         _buildingsView = [[NSMutableArray alloc] initWithCapacity:buildingAmount];
         CGFloat side = self.frame.size.height * 0.9;
@@ -140,7 +146,8 @@
     return _buildingsView;
 }
 
-- (NSMutableArray<UIImageView *> *)obstaclesView  {
+- (NSMutableArray<UIImageView *> *)obstaclesView  
+{
     if(!_obstaclesView) {
         _obstaclesView = [[NSMutableArray alloc] initWithCapacity:obstacleAmount];
         CGFloat side = self.frame.size.height * 0.2;
@@ -156,7 +163,8 @@
 
 #pragma mark AnimationProperty
 
-- (CABasicAnimation *)jumpUpAnimation {
+- (CABasicAnimation *)jumpUpAnimation 
+{
     if(!_jumpUpAnimation) {
         _jumpUpAnimation = [CABasicAnimation animationWithKeyPath:@"position.y"];
         _jumpUpAnimation.fromValue = @(self.runningShesl.center.y);
@@ -180,7 +188,8 @@
     return _jumpUpAnimation;
 }
 
-- (CABasicAnimation *)jumpDownAnimation {
+- (CABasicAnimation *)jumpDownAnimation 
+{
     if(!_jumpDownAnimation) {
         _jumpDownAnimation = [CABasicAnimation animationWithKeyPath:@"position.y"];
         _jumpDownAnimation.toValue = @(self.runningShesl.center.y);
@@ -203,7 +212,8 @@
     return _jumpDownAnimation;
 }
 
-- (CABasicAnimation *)buildingMoveAnimation {
+- (CABasicAnimation *)buildingMoveAnimation 
+{
     if(!_buildingMoveAnimation) {
         _buildingMoveAnimation = [CABasicAnimation animationWithKeyPath:@"position.x"];
         _buildingMoveAnimation.fromValue = @(SCREEN_WIDTH + self.frame.size.height);
@@ -216,7 +226,8 @@
     return _buildingMoveAnimation;
 }
 
-- (CABasicAnimation *)obstacleMoveAnimation {
+- (CABasicAnimation *)obstacleMoveAnimation 
+{
     if (!_obstacleMoveAnimation) {
         _obstacleMoveAnimation = [CABasicAnimation animationWithKeyPath:@"position.x"];
         _obstacleMoveAnimation.fromValue = @(SCREEN_WIDTH + self.frame.size.height);
@@ -231,13 +242,15 @@
 
 #pragma mark PlayAnimation
 
-- (void)playJumpUp {
+- (void)playJumpUp 
+{
     if(jumpDone == NO) return;
     jumpDone = NO;
     [self.runningShesl.layer addAnimation:self.jumpUpAnimation forKey:nil];
 }
 
-- (void)playBuildingMoveForIndex:(NSUInteger)index {
+- (void)playBuildingMoveForIndex:(NSUInteger)index 
+{
     UIImageView *buildingView = self.buildingsView[index];
     [buildingView setImage:self.jumpGameScenes.randomPickBuilding];
     
@@ -246,7 +259,8 @@
     [buildingView.layer addAnimation:moveAnimation forKey:nil];
 }
 
-- (void)playObstacleMoveForIndex:(NSUInteger)index {
+- (void)playObstacleMoveForIndex:(NSUInteger)index 
+{
     UIImageView *obstacleView = self.obstaclesView[index];
     CGFloat y = self.frame.size.height * 0.7 * ((float)rand() / RAND_MAX);
     CGFloat side = obstacleView.frame.size.height;
@@ -263,7 +277,8 @@
 
 #pragma mark GameCore
 
-- (void)checkDangerous {
+- (void)checkDangerous 
+{
     CGRect sheslLayerFrame = jumpDone ? self.runningShesl.frame :[self.runningShesl.layer presentationLayer].frame;
     for (UIImageView *obstacleView in self.obstaclesView) {
         CGRect obstacleLayerFrame = [obstacleView.layer presentationLayer].frame;
@@ -283,7 +298,8 @@
     dieState = NO;
 }
 
-- (void)stopAllAnimations {
+- (void)stopAllAnimations 
+{
     dispatch_queue_t queue = dispatch_get_main_queue();
 //    dieState = YES;
     
@@ -308,7 +324,8 @@
     });
 }
 
-- (void)continueAllAnimations {
+- (void)continueAllAnimations 
+{
     dispatch_queue_t queue = dispatch_get_main_queue();
     dispatch_group_t group = dispatch_group_create();
     dispatch_group_enter(group);
@@ -343,7 +360,8 @@
 
 #pragma mark CAAnimationDelegate
 
-- (void)animationDidStop:(CAAnimation *)anim finished:(BOOL)flag {
+- (void)animationDidStop:(CAAnimation *)anim finished:(BOOL)flag 
+{
     NSString *animationName = [anim valueForKey:@"animationName"];
     if (flag) {
         if ([animationName isEqualToString:@"jumpUpAnimation"])

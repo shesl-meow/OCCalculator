@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import "../CommonMacro.h"
-#import "../CalculatorModel/CalculatorLogic.h"
+#import "../CalculatorModel/CalculatorLogicProtocol.h"
 #import "../CalculatorModel/CalculatorButton.h"
 
 /*
@@ -51,7 +51,7 @@ typedef NS_OPTIONS(NSUInteger, CalculatorButtonName) {
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface NormalLogic : NSObject<CalculatorLogic>
+@interface NormalLogic : NSObject<CalculatorLogicProtocol>
 - (NSString *)display;
 - (void)onClickCalculatorButton:(CalculatorButton *)sender;
 

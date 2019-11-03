@@ -11,7 +11,8 @@
 
 @implementation JumpGameSceneModel
 
-- (instancetype) init {
+- (instancetype) init 
+{
     self = [super init];
     if (self) {
         _bottomgroundColor = [[UIColor alloc] init];
@@ -29,7 +30,8 @@
 
 @implementation JumpGameScenes
 
-- (instancetype)init {
+- (instancetype)init 
+{
     self = [super init];
     if (self) {
         _scenes = [[NSMutableArray alloc] initWithCapacity:1];
@@ -53,18 +55,21 @@
     return self;
 }
 
-- (JumpGameSceneModel *)currentScene {
+- (JumpGameSceneModel *)currentScene 
+{
     return _scenes[currentIndex];
 }
 
 #pragma mark Random
 
-- (JumpGameSceneModel *)randomPickScene {
+- (JumpGameSceneModel *)randomPickScene 
+{
     currentIndex = arc4random_uniform((int)self.scenes.count);
     return _scenes[currentIndex];
 }
 
-- (UIImage *)randomPickBuilding {
+- (UIImage *)randomPickBuilding 
+{
     NSMutableArray <UIImage *> *buildings = self.currentScene.buildingsList;
 //    ar
     NSInteger randomIndex = arc4random_uniform((int)buildings.count);

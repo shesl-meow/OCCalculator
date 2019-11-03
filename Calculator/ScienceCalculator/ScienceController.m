@@ -18,7 +18,8 @@
 @synthesize descriptionText = _descriptionText;
 @synthesize accessoryImage = _accessoryImage;
 
-- (instancetype)init {
+- (instancetype)init
+{
     self = [super init];
     if(self) {
         _nameText = @"SCIENCE";
@@ -27,7 +28,8 @@
     return self;
 }
 
-- (void)viewDidLoad {
+- (void)viewDidLoad
+{
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     self.title = self.nameText;
@@ -38,14 +40,16 @@
 
 #pragma mark PropertyMethod
 
-- (UIImage *)accessoryImage {
+- (UIImage *)accessoryImage
+{
     if(!_accessoryImage) {
         _accessoryImage = [UIImage imageNamed:@"science"];
     }
     return _accessoryImage;
 }
 
-- (PendulumView *)pendulemView {
+- (PendulumView *)pendulemView
+{
     if(!_pendulemView){
         CGFloat width = SCREEN_WIDTH, height = SCREEN_WIDTH / 2;
         CGRect frame = CGRectMake(0, SCREEN_HEIGHT/2 - height/2 , width, height);

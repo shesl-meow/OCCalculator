@@ -9,7 +9,7 @@
 #import <Foundation/Foundation.h>
 #import "CalculatorScreenView.h"
 #import "CalculatorButtonsNetView.h"
-#import "CalculatorLogic.h"
+#import "CalculatorLogicProtocol.h"
 
 
 NS_ASSUME_NONNULL_BEGIN
@@ -20,7 +20,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property(strong) NSString *nameText;
 @property(strong) NSString *descriptionText;
 @property(strong) UIImage *accessoryImage;
-@property(strong, nonatomic) NSObject<CalculatorLogic> *calculatorLogic;
+@property(strong, nonatomic) NSObject<CalculatorLogicProtocol> *calculatorLogic;
 @property(strong, nonatomic) CalculatorScreenView *calculatorScreenView;
 @property(strong, nonatomic) CalculatorButtonsNetView *calculatorButtonsNetView;
 

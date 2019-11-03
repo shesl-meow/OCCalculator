@@ -76,7 +76,7 @@
 		6162C05E2334DCE40097F079 /* CalculatorButton.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CalculatorButton.m; sourceTree = "<group>"; };
 		61BF3DBB23336F7C00DC57F3 /* NormalController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NormalController.h; sourceTree = "<group>"; };
 		61BF3DBC23336F7C00DC57F3 /* NormalController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NormalController.m; sourceTree = "<group>"; };
-		61D38F352334900600222C2A /* CalculatorLogic.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CalculatorLogic.h; sourceTree = "<group>"; };
+		61D38F352334900600222C2A /* CalculatorLogicProtocol.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CalculatorLogicProtocol.h; sourceTree = "<group>"; };
 		61D38F3923349DB200222C2A /* CalculatorController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CalculatorController.h; sourceTree = "<group>"; };
 		61DC8B602339C1C90024A6A0 /* ScienceController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = ScienceController.h; path = Calculator/ScienceCalculator/ScienceController.h; sourceTree = SOURCE_ROOT; };
 		61DC8B612339C1C90024A6A0 /* ScienceController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = ScienceController.m; path = Calculator/ScienceCalculator/ScienceController.m; sourceTree = SOURCE_ROOT; };
@@ -195,7 +195,7 @@
 				61300070232F8EE500AA119E /* CalculatorButtonsNetView.m */,
 				6162C05D2334DCE40097F079 /* CalculatorButton.h */,
 				6162C05E2334DCE40097F079 /* CalculatorButton.m */,
-				61D38F352334900600222C2A /* CalculatorLogic.h */,
+				61D38F352334900600222C2A /* CalculatorLogicProtocol.h */,
 				61D38F3923349DB200222C2A /* CalculatorController.h */,
 			);
 			path = CalculatorModel;

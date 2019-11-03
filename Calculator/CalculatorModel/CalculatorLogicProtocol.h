@@ -12,7 +12,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @class CalculatorButton;
 
-@protocol CalculatorLogic <NSObject>
+@protocol CalculatorLogicProtocol <NSObject>
 
 @required
 - (NSString *)display;

@@ -24,7 +24,8 @@
 
 #pragma mark ExtensionMethod
 
-- (float)doCalculate {
+- (float)doCalculate 
+{
     if (self.op == PlusOperator) {
         self.left = self.left + self.right;
     } else if (self.op == MinusOperator) {
@@ -40,7 +41,8 @@
     } else if (self.op == ModOperator) {
         NSUInteger intLeft = self.left;
         NSUInteger intRight = self.right;
-        if((_left - intLeft != 0) || (_right - intRight != 0) || (self.right == 0)) {
+        if((_left - intLeft != 0) || (_right - intRight != 0) || (self.right == 0)) 
+{
             [self clear];
             return self.left;
         }
@@ -51,14 +53,16 @@
     return self.left;
 }
 
-- (void)clear {
+- (void)clear 
+{
     self.left = 0;
     self.right = 0;
     self.op = NoneOperator;
     self.numberBuffer = @"";
 }
 
-- (void)back {
+- (void)back 
+{
     NSUInteger length = [self.numberBuffer length];
     if (length != 0) {
         self.numberBuffer = [self.numberBuffer substringToIndex:(length - 1)];
@@ -69,11 +73,13 @@
     }
 }
 
-- (void)append:(NSString *)number {
+- (void)append:(NSString *)number 
+{
     self.numberBuffer = [self.numberBuffer stringByAppendingString:number];
 }
 
-- (void)push:(CalculatorOperator)op {
+- (void)push:(CalculatorOperator)op 
+{
     if (self.op != NoneOperator) {
         self.right = [self.numberBuffer floatValue];
         self.numberBuffer = @"";
@@ -86,7 +92,8 @@
     }
 }
 
-- (void)equal {
+- (void)equal 
+{
     self.right = [self.numberBuffer floatValue];
     [self doCalculate];
     self.numberBuffer = [[NSNumber numberWithFloat:self.left] stringValue];
@@ -95,7 +102,8 @@
 
 #pragma mark CalculatorLogic
 
-- (NSString *)display {
+- (NSString *)display 
+{
     if (self.op == NoneOperator) {
         assert((self.left == 0) && (self.right == 0));
         return self.numberBuffer;

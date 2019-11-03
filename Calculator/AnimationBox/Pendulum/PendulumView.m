@@ -25,7 +25,8 @@
 /*
 // Only override drawRect: if you perform custom drawing.
 // An empty implementation adversely affects performance during animation.
-- (void)drawRect:(CGRect)rect {
+- (void)drawRect:(CGRect)rect 
+{
     // Drawing code
 }
 */
@@ -67,7 +68,8 @@
 
 #pragma mark ViewsProperty
 
-- (NSMutableArray<UIView *> *)circleViews {
+- (NSMutableArray<UIView *> *)circleViews 
+{
     if(!_circleViews) {
         _circleViews = [[NSMutableArray alloc] init];
         CGFloat y = (0.618 * 12 - 1) * radius, side = 2 * radius;
@@ -85,7 +87,8 @@
     return _circleViews;
 }
 
-- (NSMutableArray<UIView *> *)shadowViews {
+- (NSMutableArray<UIView *> *)shadowViews 
+{
     if(!_shadowViews){
         _shadowViews = [[NSMutableArray alloc] init];
         CGFloat y = 9.416 * radius, side = 2 * radius;
@@ -112,12 +115,14 @@
     return _shadowViews;
 }
 
-- (NSMutableArray<CAGradientLayer *> *)gradientLayers{
+- (NSMutableArray<CAGradientLayer *> *)gradientLayers
+{
     if(!_gradientLayers) _gradientLayers = [[NSMutableArray alloc] init];
     return _gradientLayers;
 }
 
-- (void)irradiateCircleForIndex:(NSUInteger)index {
+- (void)irradiateCircleForIndex:(NSUInteger)index 
+{
     dispatch_async(dispatch_get_main_queue(), ^{
         CGRect pFrame = self.circleViews[index].layer.presentationLayer.frame;
         UIView *shadowView = self.shadowViews[index];
@@ -145,7 +150,8 @@
         这还是一个二次函数，我们可以直接参考 JumpGame 中的q贝塞尔曲线。
  */
 
-- (CAKeyframeAnimation *)leftPendulumAnimation{
+- (CAKeyframeAnimation *)leftPendulumAnimation
+{
     if(!_leftPendulumAnimation){
         _leftPendulumAnimation = [CAKeyframeAnimation animationWithKeyPath:@"transform.rotation.z"];
         
@@ -162,7 +168,8 @@
     return _leftPendulumAnimation;
 }
 
-- (CAKeyframeAnimation *)rightPendulumAnimation{
+- (CAKeyframeAnimation *)rightPendulumAnimation
+{
     if(!_rightPendulumAnimation){
         _rightPendulumAnimation = [CAKeyframeAnimation animationWithKeyPath:@"transform.rotation.z"];
         
@@ -181,7 +188,8 @@
 
 #pragma mark CAAnimationDelegate
 
-- (void)animationDidStop:(CAAnimation *)anim finished:(BOOL)flag {
+- (void)animationDidStop:(CAAnimation *)anim finished:(BOOL)flag 
+{
     NSString *animationName = [anim valueForKey:@"animationName"];
 
     if ([animationName isEqual:@"leftPendulumAnimation"]) {

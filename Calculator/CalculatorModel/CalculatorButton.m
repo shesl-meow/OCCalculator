@@ -11,7 +11,8 @@
 
 @implementation CalculatorButton
 
-- (instancetype)initWithFrame:(CGRect)frame Row:(NSUInteger)row Column:(NSUInteger)column {
+- (instancetype)initWithFrame:(CGRect)frame Row:(NSUInteger)row Column:(NSUInteger)column 
+{
     self = [super initWithFrame:frame];
     if (self) {
         _row = row;
@@ -35,7 +36,8 @@
 /*
 // Only override drawRect: if you perform custom drawing.
 // An empty implementation adversely affects performance during animation.
-- (void)drawRect:(CGRect)rect {
+- (void)drawRect:(CGRect)rect 
+{
     // Drawing code
 }
 */

@@ -11,7 +11,8 @@
 
 @implementation NormalButtonsNetView
 
-- (instancetype)initNetWithFrame:(CGRect)frame ClickDelegate:(NSObject<CalculatorClickDelegate> *)clickDelegate {
+- (instancetype)initNetWithFrame:(CGRect)frame ClickDelegate:(NSObject<CalculatorClickDelegate> *)clickDelegate 
+{
     self = [super initWithFrame:frame MaxRow:ROW_AMOUNT MaxColumn:COLUMN_AMOUNT ClickDelegate:clickDelegate];
     
     if (!self) return self;

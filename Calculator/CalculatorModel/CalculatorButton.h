@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "CalculatorLogic.h"
+#import "CalculatorLogicProtocol.h"
 
 NS_ASSUME_NONNULL_BEGIN
 

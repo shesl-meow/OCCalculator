@@ -35,7 +35,8 @@
     self.mainTableView.dataSource = self;
 }
 
-- (NSMutableArray<UIViewController<CalculatorController> *> *)calculatorControllerList {
+- (NSMutableArray<UIViewController<CalculatorController> *> *)calculatorControllerList
+{
     if (!_calculatorControllerList) {
         _calculatorControllerList = [[NSMutableArray alloc] initWithObjects:[[NormalController alloc] init], [[ScienceController alloc] init], nil];
     }
