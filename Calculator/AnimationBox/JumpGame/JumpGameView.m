@@ -28,10 +28,10 @@
 @property(nonatomic, strong) NSMutableArray<UIImageView *> *buildingsView;
 @property(nonatomic, strong) NSMutableArray<UIImageView *> *obstaclesView;
 
-@property(strong, nonatomic) CABasicAnimation *jumpUpAnimation;
-@property(strong, nonatomic) CABasicAnimation *jumpDownAnimation;
-@property(strong, nonatomic) CABasicAnimation *buildingMoveAnimation;
-@property(strong, nonatomic) CABasicAnimation *obstacleMoveAnimation;
+@property(nonatomic, strong) CABasicAnimation *jumpUpAnimation;
+@property(nonatomic, strong) CABasicAnimation *jumpDownAnimation;
+@property(nonatomic, strong) CABasicAnimation *buildingMoveAnimation;
+@property(nonatomic, strong) CABasicAnimation *obstacleMoveAnimation;
 
 - (void)playBuildingMoveForIndex:(NSUInteger)index;
 - (void)playObstacleMoveForIndex:(NSUInteger)index;

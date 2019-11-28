@@ -13,13 +13,13 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface JumpGameSceneModel : NSObject
 
-@property(strong) UIColor *bottomgroundColor;
-@property(strong) UIColor *backgroundColor;
-@property(strong) UIColor *buildingColor;
-@property(strong) UIColor *obstacleColor;
-@property(strong) UIColor *sheslColor;
-@property(strong) NSMutableArray <UIImage *> *buildingsList;
-@property(strong) UIImage *obstacleImage;
+@property(nonatomic, strong) UIColor *bottomgroundColor;
+@property(nonatomic, strong) UIColor *backgroundColor;
+@property(nonatomic, strong) UIColor *buildingColor;
+@property(nonatomic, strong) UIColor *obstacleColor;
+@property(nonatomic, strong) UIColor *sheslColor;
+@property(nonatomic, strong) NSMutableArray <UIImage *> *buildingsList;
+@property(nonatomic, strong) UIImage *obstacleImage;
 
 @end
 
@@ -27,7 +27,7 @@ NS_ASSUME_NONNULL_BEGIN
 @interface JumpGameScenes : NSObject{
     NSUInteger currentIndex;
 }
-@property(strong) NSMutableArray <JumpGameSceneModel *> *scenes;
+@property(nonatomic, strong) NSMutableArray <JumpGameSceneModel *> *scenes;
 
 - (JumpGameSceneModel *)currentScene;
 

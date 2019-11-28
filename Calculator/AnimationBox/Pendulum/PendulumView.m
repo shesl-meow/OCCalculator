@@ -14,9 +14,9 @@
     NSUInteger duration;
 }
 
-@property(strong, nonatomic) CAKeyframeAnimation* leftPendulumAnimation;
-@property(strong, nonatomic) CAKeyframeAnimation* rightPendulumAnimation;
-@property(strong, nonatomic) CABasicAnimation* rightDownPendulumAnimation;
+@property(nonatomic, strong) CAKeyframeAnimation* leftPendulumAnimation;
+@property(nonatomic, strong) CAKeyframeAnimation* rightPendulumAnimation;
+@property(nonatomic, strong) CABasicAnimation* rightDownPendulumAnimation;
 
 @end
 

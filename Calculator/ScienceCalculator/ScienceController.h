@@ -14,7 +14,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface ScienceController : UIViewController<CalculatorController>
 
-@property(strong, nonatomic) PendulumView *pendulemView;
+@property(nonatomic, strong) PendulumView *pendulemView;
 
 @end
 

@@ -55,10 +55,10 @@ NS_ASSUME_NONNULL_BEGIN
 - (NSString *)display;
 - (void)onClickCalculatorButton:(CalculatorButton *)sender;
 
-@property(strong) NSString *numberBuffer;
-@property(assign) float left;
-@property(assign) float right;
-@property(assign) CalculatorOperator op;
+@property(nonatomic, strong) NSString *numberBuffer;
+@property(nonatomic, assign) float left;
+@property(nonatomic, assign) float right;
+@property(nonatomic, assign) CalculatorOperator op;
 - (void)clear;
 - (void)back;
 - (void)append:(NSString *)number;

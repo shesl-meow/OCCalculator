@@ -14,9 +14,9 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property(nonatomic, strong) NSMutableArray<UIView *> *circleViews;
 
-@property(strong, nonatomic) NSMutableArray<UIView *> *shadowViews;
+@property(nonatomic, strong) NSMutableArray<UIView *> *shadowViews;
 
-@property(strong, nonatomic) NSMutableArray<CAGradientLayer *> *gradientLayers;
+@property(nonatomic, strong) NSMutableArray<CAGradientLayer *> *gradientLayers;
 
 - (void)irradiateCircleForIndex:(NSUInteger)index;
 

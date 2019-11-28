@@ -20,7 +20,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface JumpGameView : UIView
 
-@property(weak) NSObject<JumpFailedDelegate> *jumpFailedDelegate;
+@property(nonatomic, weak) NSObject<JumpFailedDelegate> *jumpFailedDelegate;
 
 - (void)playJumpUp;
 
