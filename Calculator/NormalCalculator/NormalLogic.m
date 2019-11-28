@@ -107,20 +107,15 @@
     if (self.op == NoneOperator) {
         assert((self.left == 0) && (self.right == 0));
         return self.numberBuffer;
-    } else {
-        NSString *leftStr = [[NSNumber numberWithFloat:self.left] stringValue];
-        if (self.op == PlusOperator) {
-            return [NSString stringWithFormat:@"%@+%@", leftStr, self.numberBuffer];
-        } else if (self.op == MinusOperator) {
-            return [NSString stringWithFormat:@"%@-%@", leftStr, self.numberBuffer];
-        } else if (self.op == MultipleOperator) {
-            return [NSString stringWithFormat:@"%@×%@", leftStr, self.numberBuffer];
-        } else if (self.op == DivideOperator) {
-            return [NSString stringWithFormat:@"%@÷%@", leftStr, self.numberBuffer];
-        } else if (self.op == ModOperator) {
-            return [NSString stringWithFormat:@"%@ mod %@", leftStr, self.numberBuffer];
-        }
     }
-    return @"";
+    NSString *leftStr = [[NSNumber numberWithFloat:self.left] stringValue];
+    switch (self.op) {
+        case PlusOperator       : return [NSString stringWithFormat:@"%@+%@", leftStr, self.numberBuffer];
+        case MinusOperator      : return [NSString stringWithFormat:@"%@-%@", leftStr, self.numberBuffer];
+        case MultipleOperator   : return [NSString stringWithFormat:@"%@×%@", leftStr, self.numberBuffer];
+        case DivideOperator     : return [NSString stringWithFormat:@"%@÷%@", leftStr, self.numberBuffer];
+        case ModOperator        : return [NSString stringWithFormat:@"%@ mod %@", leftStr, self.numberBuffer];
+        default                 : return @"";
+    }
 }
 @end

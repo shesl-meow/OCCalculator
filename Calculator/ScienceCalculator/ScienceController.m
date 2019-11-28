@@ -17,6 +17,9 @@
 @synthesize nameText = _nameText;
 @synthesize descriptionText = _descriptionText;
 @synthesize accessoryImage = _accessoryImage;
+@synthesize calculatorButtonsNetView = _calculatorButtonsNetView;
+@synthesize calculatorLogic = _calculatorLogic;
+@synthesize calculatorScreenView = _calculatorScreenView;
 
 - (instancetype)init
 {
