@@ -14,11 +14,13 @@ NS_ASSUME_NONNULL_BEGIN
 @interface CalculatorButton : UIButton
 
 @property(nonatomic, assign) NSUInteger row;
+
 @property(nonatomic, assign) NSUInteger column;
 
 - (instancetype)initWithFrame:(CGRect)frame
                           Row:(NSUInteger)row
                        Column:(NSUInteger)column;
+
 - (void)setImageWithName:(NSString *)imageName;
 
 @end

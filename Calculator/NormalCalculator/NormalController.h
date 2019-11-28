@@ -18,6 +18,7 @@ NS_ASSUME_NONNULL_BEGIN
 @interface NormalController : UIViewController<CalculatorController, CalculatorClickDelegate, JumpFailedDelegate>
 
 @property(nonatomic, strong) NormalLogic<CalculatorLogicProtocol> *calculatorLogic;
+
 @property(nonatomic, strong) NormalButtonsNetView *calculatorButtonsNetView;
 
 @property(nonatomic, strong) JumpGameView *jumpGameView;

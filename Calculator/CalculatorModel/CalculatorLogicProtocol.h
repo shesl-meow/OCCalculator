@@ -15,6 +15,7 @@ NS_ASSUME_NONNULL_BEGIN
 @protocol CalculatorLogicProtocol <NSObject>
 
 @required
+
 - (NSString *)display;
 
 @end

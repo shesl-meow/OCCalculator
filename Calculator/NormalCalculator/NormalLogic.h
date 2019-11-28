@@ -52,19 +52,31 @@ typedef NS_OPTIONS(NSUInteger, CalculatorButtonName) {
 NS_ASSUME_NONNULL_BEGIN
 
 @interface NormalLogic : NSObject<CalculatorLogicProtocol>
-- (NSString *)display;
-- (void)onClickCalculatorButton:(CalculatorButton *)sender;
 
 @property(nonatomic, strong) NSString *numberBuffer;
+
 @property(nonatomic, assign) float left;
+
 @property(nonatomic, assign) float right;
+
 @property(nonatomic, assign) CalculatorOperator op;
+
+- (NSString *)display;
+
+- (void)onClickCalculatorButton:(CalculatorButton *)sender;
+
 - (void)clear;
+
 - (void)back;
+
 - (void)append:(NSString *)number;
+
 - (void)push:(CalculatorOperator)op;
+
 - (void)equal;
+
 - (float)doCalculate;
+
 @end
 
 NS_ASSUME_NONNULL_END

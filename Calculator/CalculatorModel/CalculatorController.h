@@ -17,11 +17,17 @@ NS_ASSUME_NONNULL_BEGIN
 @protocol CalculatorController <NSObject>
 
 @required
+
 @property(nonatomic, strong) NSString *nameText;
+
 @property(nonatomic, strong) NSString *descriptionText;
+
 @property(nonatomic, strong) UIImage *accessoryImage;
+
 @property(nonatomic, strong) NSObject<CalculatorLogicProtocol> *calculatorLogic;
+
 @property(nonatomic, strong) CalculatorScreenView *calculatorScreenView;
+
 @property(nonatomic, strong) CalculatorButtonsNetView *calculatorButtonsNetView;
 
 - (void)onClickCalculatorButton:(CalculatorButton *)sender;

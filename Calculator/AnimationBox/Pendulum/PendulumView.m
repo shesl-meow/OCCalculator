@@ -15,7 +15,9 @@
 }
 
 @property(nonatomic, strong) CAKeyframeAnimation* leftPendulumAnimation;
+
 @property(nonatomic, strong) CAKeyframeAnimation* rightPendulumAnimation;
+
 @property(nonatomic, strong) CABasicAnimation* rightDownPendulumAnimation;
 
 @end
